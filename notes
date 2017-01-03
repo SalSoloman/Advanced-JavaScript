@@ -1,0 +1,245 @@
+Object Oriented JS
+Notes from: https://youtu.be/5VkrdKzKGlA
+
+What is OOP:
+OOP alleviates the problems that occur with spaghetti coding. When code exists loosely within an application and changes need to be made, you'll be making changes in many places without a method or structure in place to target those places. 
+
+
+Classes are data structures or models that contain properties, methods, and events. In short a Blueprint.
+
+Properties are the data points. 
+Methods are actions that be performed
+Events are things that can occur 
+
+A developer can create instances of this class which makes classes live structures that can be worked with. 
+
+
+Employee Objects for example:
+
+Employee class 
+	|		|
+CFO class  Worker Class
+	|		|
+CEO class 	Hrly Worker 
+
+
+
+Procedural vs. OOP
+Notes from: https://youtu.be/G_pglM4qYGA
+
+Cons of Procedural: 
+
+Example of Procedural
+Step 1. Open the door, Step 2.Close the door  Step 3. Turn on the lights, Step 4 Turn on the computers... etc
+
+OOP breaks these up into units into basically reusable units
+----> This unit preps the resturaunt
+----> This unit preps the pizza with no toppings
+----> This unit adds the toppings 
+etc.... 
+
+This is called modularity. It's like driving a stick vs an automatic.
+
+If you wanted to make 5 different pizza's you'd have to go back to step one in procedural and make the other pizza. With, OOP, you'd have units: Make the dough, make the sauce, apply the cheese, throw on the toppings. 
+
+To debug procedural, review the WHOLE code. 
+To debug OOP, review the unit that's problematic. 
+
+OOP JS Tutorial: 
+https://youtu.be/O8wwnhdkPE4
+
+Abstraction
+Modeling objects after all of their common attributes with Classes. We focus on the essential qualities of the idea and ignore what's unimportant. When we think about the attributes of a bank account, we won't hyper-focus on the qualities that make up  Bre's bank account  vs. Sal's bank account or that they were opened on different dates or the different balances that they carry, creating two different objects with unique data for each account. We focus on the common attributes to create a class. 
+
+
+Creating a basic object:
+
+var customer = {
+name: 'Tom Smith',
+	speak: function(){
+	 	return 'My name is' + this.name;
+    	}, 
+ address: { 
+	street: '123 Main St.', 
+	city: 'Pittsburg', 
+	state: 'PA' 
+  }
+};
+
+Create multiple objects of the same type:
+
+Constructor Function and utilizing their properties: 
+
+function Person(name, street) {
+	this.name = name;
+	this.street = street; 
+}
+
+var Sal = new Person('Sal Solomon', '234 main st.');
+
+
+Every function will have a prototype object
+
+function Mammal(name){
+	this.name = name; 
+	this.getInfo = function(){
+	return 'The mammals name is ' + this.name; 
+       }
+}
+
+Mammal.prototype.sound = 'Grrr'; 
+Mammal.prototype.makesound = function() {
+return this.name + 'says' + this.sound; 
+}
+
+var grover = new Mammal('Grover'); 
+document.write(grover.makesSound() + '<bre />");
+
+for (var prop in grover) { 
+	document.write(prop + ":" + grover[prop] + '<br />');
+}
+
+ 
+Adding in methods to built in JS prototypes
+
+Array.prototype.inArray =function inArray(value) {
+	for(i=0; i < this.length; i++) {
+		if (this [i] === value) {
+			return true;
+			}
+	}
+	return false;
+}
+
+var sampArray = [1,2,3,4,5];
+
+document.write('3 in array' + sampArray.inArray(3) +  'br />');
+
+
+Polymorphism 
+https://youtu.be/_INhKtW33Mc
+
+"Many forms", lets us automatically do the correct behavior even if the object takes on many forms. 
+
+For example: 
+a + b 
+If a and b are numbers, it''ll add them. But if they are strings, it will concatenate them. 
+
+An aunt can be : 
+	woman (implied gender/sexism!) 
+	wife
+	mother 
+	employee 
+
+It's about how you look at her. 
+
+An object can be treated as if it was any of it's "superclasses."
+So, the object takes many different forms.  We expect a dog to act like a dog, but we also identify a dog as an animal and a mammal and as an animal and a pet. 
+
+Inheritance
+https://youtu.be/QzX7REqciPY
+
+So, lets say Animal and Dog are both classes. 
+An Animal has an : 
+	Age
+	Weight
+	Color 
+The Dog class will inherit the attributes of its parent class, Animal. 
+
+Encapsulation
+https://youtu.be/QzX7REqciPY
+
+"Hides the internal state of one object from others"
+
+
+Sometimes OOP may be better for certain paradigms. OOP were designed to reduce complexity and improve manageability where data and operations are gathered into discrete Objects using Abstraction, Polymorphism, Inheritance, and Encapsulation (APIE).
+
+Classes vs. Prototypes
+***Classes aren't really objects, they are constructs or templates. They don't have defined properties in constructed classes. In this sense, they are an organizational to create a library. When instances of the Classes are declared, the class used to construct the new object will be able to access the the properties of the parent object  where as prototypes can also access all of the same things with the exception  that prototypes can access attributes from anywhere, not just parent objects. Also, prototypes are real objects. Not just templated constructs. 
+
+
+Jquery Basics 
+
+https://www.impressivewebs.com/jquery-tutorial-for-beginners/
+
+JQuery is just a JS library. 
+
+http://try.jquery.com/levels/1/challenges/1
+
+How our browser organizes information it recieves?? The DOM. 
+HTML loads elements piece by piece to the DOM in nodes. 
+HTML is the child to the document node.  html is the parent to head and title
+etc...
+JS interacts with the DOM.  Each browser has a slightly different DOM interface. 
+jQuery can be written to talk to all browser DOM's. One piece of code can interact with all DOM web browsers
+
+
+We need to search through the DOM to find elements. 
+We use CSS selectors to talk to the DOM 
+
+$('h1');  <--- using jquery to return the h1 tag
+$('h1').text("text"); <--- returns the text h1 applies to
+
+The DOM has to finish loading before we interact with it. We need to write a code for that 
+$(document).ready(function){
+-------CODE-----
+});  .... etc
+
+Return all li's in site 
+$("li");  
+
+We can find line items by id's or classes too 
+if element has id. 
+
+$("#container"); 
+or for class 
+$(".container"):
+
+
+Searching through the DOM
+Descendant selectors / child selectors
+$("#destinations li") <--- li element inside desitantion
+
+$("#destinations >  li") <--- Direct descendant (best for ul's nested in ul's 
+
+$("#destinations li: first"); <-- pseudo class selector 
+ 
+$("#destinations li: las"); <-- pseudo class selector 
+
+
+Use comma's to select more than one selector
+
+
+Traversing
+Filtering by traversing has two parts: the selection, the second part is the traversal 
+
+$("#destination").find(li);  =  $('#destination li')
+$("#destinations").children("li") <---children only
+
+Walking the DOM
+$("li").first().next();
+
+Walking up the DOM
+$("li").first().parent(); = $("ul")
+
+
+Changing a price on a button (example)
+Create a new DOM node
+
+var price = $(<p>"from $399.99</p>); 
+$(''.vacation).append(price);  <--- adds as the last child to our parent nodeb  
+$('button").remove();
+
+four meths
+.appendTo(,element>) 
+.prependTo(<element>)
+
+$(this)
+$(this) <----refers to the element affected within the function specifically
+
+
+
+data tag is html element
+.data(<name>) 
+
+	
